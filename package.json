@@ -1,7 +1,7 @@
 {
   "name": "react-npm-example-brian",
   "private": false,
-  "version": "0.0.5",
+  "version": "0.0.9",
   "type": "module",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
@@ -10,6 +10,10 @@
     ".": {
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js"
+    },
+    "./dist/output.css": {
+      "import": "./dist/output.css",
+      "require": "./dist/output.css"
     }
   },
   "files": [
@@ -20,7 +24,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build:css": "npx tailwindcss -o ./dist/output.css --minify",
+    "build": "tsc && vite build && npm run build:css",
     "prepare": "npm run build",
     "preview": "vite preview"
   },
